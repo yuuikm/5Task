@@ -92,9 +92,9 @@ export default function BookTable({ books, seed }: BookGalleryProps) {
                         <li key={idx}>
                           <span className="font-semibold">
                             {review.reviewer}
-                          </span>{" "}
+                          </span>
                           from <span className="italic">{review.company}</span>:
-                          "{review.review}"
+                          {review.review}
                         </li>
                       ))}
                     </ul>

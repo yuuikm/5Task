@@ -9,33 +9,12 @@ export async function GET(request: Request) {
   const reviews = parseFloat(searchParams.get("reviews") || "0");
   const count = Number(searchParams.get("count")) || 20;
 
-  fakerEN.seed(Number(seed)); // Use the same seed for deterministic results
+  fakerEN.seed(Number(seed));
 
-  const generateTitle = () => {
-    const adjectives = [
-      "Lost",
-      "Forgotten",
-      "Mystical",
-      "Beautiful",
-      "Dangerous",
-    ];
-    const nouns = ["Journey", "Secret", "Dreams", "World", "Adventure", "Past"];
-    const formats = [
-      `The ${fakerEN.word.adjective()} ${fakerEN.word.noun()}`,
-      `${fakerEN.word.adjective()} ${fakerEN.word.noun()}: A ${fakerEN.word.noun()} Tale`,
-      `${fakerEN.word.noun()} of the ${fakerEN.word.adjective()} ${fakerEN.word.noun()}`,
-      `${adjectives[Math.floor(Math.random() * adjectives.length)]} ${
-        nouns[Math.floor(Math.random() * nouns.length)]
-      }`,
-    ];
-
-    return formats[Math.floor(Math.random() * formats.length)];
-  };
-
-  fakerEN.seed(Number(seed)); // Seed the faker instance for consistent results
+  fakerEN.seed(Number(seed));
 
   const books: Book[] = Array.from({ length: count }, (_, i) => {
-    fakerEN.seed(Number(seed) + i); // Seed deterministically for each book
+    fakerEN.seed(Number(seed) + i);
 
     return {
       index: i + 1,
